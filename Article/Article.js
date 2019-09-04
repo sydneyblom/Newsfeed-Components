@@ -42,6 +42,17 @@ const data = [
         roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
+
+
+  {
+    title: 'Components Web 23',
+    date: 'Sept 4th, 2019',
+    firstParagraph: `Launch party gen-z partner network non-disclosure agreement iPad prototype series A financing bootstrapping. Validation startup success crowdsource leverage branding. Channels business plan technology. Client A/B testing accelerator ramen facebook network effects creative series A financing deployment branding gamification innovator. `,
+
+    secondParagraph: `Strategy entrepreneur partnership focus. Hypotheses infrastructure release angel investor funding gamification scrum project user experience. Burn rate backing customer long tail infographic handshake. Lean startup handshake disruptive series A financing bootstrapping graphical user interface A/B testing mass market. Handshake business model canvas social proof paradigm shift supply chain churn rate monetization.`,
+
+    thirdParagraph: `Non-disclosure agreement equity ecosystem long tail backing A/B testing buyer buzz termsheet mass market ownership iPad virality founders. Seed money rockstar analytics social media metrics entrepreneur non-disclosure agreement advisor marketing vesting period buzz network effects. Metrics business model canvas series A financing. Channels learning curve entrepreneur sales product management low hanging fruit metrics vesting period rockstar launch party gen-z monetization validation. Hypotheses creative niche market business model canvas iPhone launch party prototype user experience assets.`
+  },
   {
     title: 'React vs Angular vs Vue',
     date: 'June 7th, 2019',
@@ -101,6 +112,7 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
+
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
@@ -112,3 +124,54 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const body = document.querySelector('body');
+
+
+
+
+
+function createArticles(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleP1 = document.createElement('p');
+  const articleP2= document.createElement('p');
+  const articleP3 = document.createElement('p');
+  const button = document.createElement('span');
+
+
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleP1);
+  article.appendChild(articleP2);
+  article.appendChild(articleP3);
+  article.appendChild(button);
+
+
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  button.classList.add("expandButton");
+
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = firstParagraph;
+  articleP2.textContent = secondParagraph;
+  articleP3.textContent = thirdParagraph;
+  button.textContent = "\u25BC";
+
+  button.addEventListener("click", (e) => {
+    console.log("clicked");
+    article.classList.toggle("article-open");
+    article.classList.toggle("close");
+  })
+  return article;
+}
+const articleFeed = data.map(item => {
+  body.appendChild(createArticles(item.title,item.date,item.firstParagraph,item.secondParagraph,item.thirdParagraph));
+})
+
+
+
